@@ -21,33 +21,33 @@ namespace File_IO.Models {
         private void SetUpBoard()
         {
             //Light
-            this[7, 0] = new ChessPiece(Pieces.R, PieceColor.L, new BitmapImage(new Uri("../Resources/R_L.png", UriKind.Relative)));
-            this[7, 1] = new ChessPiece(Pieces.N, PieceColor.L, new BitmapImage(new Uri("../Resources/K_L.png", UriKind.Relative)));
-            this[7, 2] = new ChessPiece(Pieces.B, PieceColor.L, new BitmapImage(new Uri("../Resources/B_L.png", UriKind.Relative)));
-            this[7, 3] = new ChessPiece(Pieces.Q, PieceColor.L, new BitmapImage(new Uri("../Resources/Q_L.png", UriKind.Relative)));
-            this[7, 4] = new ChessPiece(Pieces.K, PieceColor.L, new BitmapImage(new Uri("../Resources/K_L.png", UriKind.Relative)));
-            this[7, 5] = new ChessPiece(Pieces.B, PieceColor.L, new BitmapImage(new Uri("../Resources/B_L.png", UriKind.Relative)));
-            this[7, 6] = new ChessPiece(Pieces.N, PieceColor.L, new BitmapImage(new Uri("../Resources/K_L.png", UriKind.Relative)));
-            this[7, 7] = new ChessPiece(Pieces.R, PieceColor.L, new BitmapImage(new Uri("../Resources/R_L.png", UriKind.Relative)));
+            this[0, 0] = new ChessPiece(Pieces.R, PieceColor.L, new BitmapImage(new Uri("../Resources/R_L.png", UriKind.Relative)));
+            this[0, 1] = new ChessPiece(Pieces.N, PieceColor.L, new BitmapImage(new Uri("../Resources/K_L.png", UriKind.Relative)));
+            this[0, 2] = new ChessPiece(Pieces.B, PieceColor.L, new BitmapImage(new Uri("../Resources/B_L.png", UriKind.Relative)));
+            this[0, 3] = new ChessPiece(Pieces.Q, PieceColor.L, new BitmapImage(new Uri("../Resources/Q_L.png", UriKind.Relative)));
+            this[0, 4] = new ChessPiece(Pieces.K, PieceColor.L, new BitmapImage(new Uri("../Resources/K_L.png", UriKind.Relative)));
+            this[0, 5] = new ChessPiece(Pieces.B, PieceColor.L, new BitmapImage(new Uri("../Resources/B_L.png", UriKind.Relative)));
+            this[0, 6] = new ChessPiece(Pieces.N, PieceColor.L, new BitmapImage(new Uri("../Resources/K_L.png", UriKind.Relative)));
+            this[0, 7] = new ChessPiece(Pieces.R, PieceColor.L, new BitmapImage(new Uri("../Resources/R_L.png", UriKind.Relative)));
 
             for (int i = 0; i < 8; i++)
             {
-                this[6, i] = new ChessPiece(Pieces.P, PieceColor.L, new BitmapImage(new Uri("../Resources/P_L.png", UriKind.Relative)));
+                this[1, i] = new ChessPiece(Pieces.P, PieceColor.L, new BitmapImage(new Uri("../Resources/P_L.png", UriKind.Relative)));
             }
 
             //Dark
-            this[0, 0] = new ChessPiece(Pieces.R, PieceColor.L, new BitmapImage(new Uri("../Resources/R_D.png", UriKind.Relative)));
-            this[0, 1] = new ChessPiece(Pieces.N, PieceColor.L, new BitmapImage(new Uri("../Resources/K_D.png", UriKind.Relative)));
-            this[0, 2] = new ChessPiece(Pieces.B, PieceColor.L, new BitmapImage(new Uri("../Resources/B_D.png", UriKind.Relative)));
-            this[0, 3] = new ChessPiece(Pieces.Q, PieceColor.L, new BitmapImage(new Uri("../Resources/Q_D.png", UriKind.Relative)));
-            this[0, 4] = new ChessPiece(Pieces.K, PieceColor.L, new BitmapImage(new Uri("../Resources/K_D.png", UriKind.Relative)));
-            this[0, 5] = new ChessPiece(Pieces.B, PieceColor.L, new BitmapImage(new Uri("../Resources/B_D.png", UriKind.Relative)));
-            this[0, 6] = new ChessPiece(Pieces.N, PieceColor.L, new BitmapImage(new Uri("../Resources/K_D.png", UriKind.Relative)));
-            this[0, 7] = new ChessPiece(Pieces.R, PieceColor.L, new BitmapImage(new Uri("../Resources/R_D.png", UriKind.Relative)));
+            this[7, 0] = new ChessPiece(Pieces.R, PieceColor.D, new BitmapImage(new Uri("../Resources/R_D.png", UriKind.Relative)));
+            this[7, 1] = new ChessPiece(Pieces.N, PieceColor.D, new BitmapImage(new Uri("../Resources/K_D.png", UriKind.Relative)));
+            this[7, 2] = new ChessPiece(Pieces.B, PieceColor.D, new BitmapImage(new Uri("../Resources/B_D.png", UriKind.Relative)));
+            this[7, 3] = new ChessPiece(Pieces.Q, PieceColor.D, new BitmapImage(new Uri("../Resources/Q_D.png", UriKind.Relative)));
+            this[7, 4] = new ChessPiece(Pieces.K, PieceColor.D, new BitmapImage(new Uri("../Resources/K_D.png", UriKind.Relative)));
+            this[7, 5] = new ChessPiece(Pieces.B, PieceColor.D, new BitmapImage(new Uri("../Resources/B_D.png", UriKind.Relative)));
+            this[7, 6] = new ChessPiece(Pieces.N, PieceColor.D, new BitmapImage(new Uri("../Resources/K_D.png", UriKind.Relative)));
+            this[7, 7] = new ChessPiece(Pieces.R, PieceColor.D, new BitmapImage(new Uri("../Resources/R_D.png", UriKind.Relative)));
 
             for (int i = 0; i < 8; i++)
             {
-                this[1, i] = new ChessPiece(Pieces.P, PieceColor.L, new BitmapImage(new Uri("../Resources/P_D.png", UriKind.Relative)));
+                this[6, i] = new ChessPiece(Pieces.P, PieceColor.D, new BitmapImage(new Uri("../Resources/P_D.png", UriKind.Relative)));
             }
         }
 
@@ -220,20 +220,25 @@ namespace File_IO.Models {
         }
 
         private bool MovePawn(int locationX, int locationY, int toX, int toY) {
+            int curX = locationY;
+            int curY = locationX;
+            int nX = toY;
+            int nY = toX;
             ChessPiece movingPiece = this[locationX, locationY];
             int colorCoefficient = 1;
             if (movingPiece.Color == PieceColor.D) {
                 colorCoefficient = -1;
             }
-            if (locationX == toX) {
+            if (curX == nX) {
                 //Two-space movement check
-                if ((locationY == 0 || locationY == 6) && toY - locationY == 2 * colorCoefficient) {
-                    if (this[locationX, locationY + colorCoefficient] == null &&
-                        this[locationX, locationY + colorCoefficient * 2] == null) {
+                if ((curY == 1 || curY == 6) && nY - curY == 2 * colorCoefficient) {
+                    if (this[curY + colorCoefficient, curX] == null &&
+                        this[curY + colorCoefficient * 2, curX] == null) {
                         return true;
                     }
-                } else if (toY - locationY == colorCoefficient) {           //One-space movement check
-                    if (this[locationX, locationY + colorCoefficient] == null) {
+                } else if (nY - curY == colorCoefficient) {           //One-space movement check
+                    //MessageBox.Show(this[curX, (curY + colorCoefficient)].ToString());
+                    if (this[(curY + colorCoefficient), curX] == null) {
                         return true;
                     }
                 }
@@ -246,8 +251,12 @@ namespace File_IO.Models {
         }
 
         private bool MoveRook(int locationX, int locationY, int toX, int toY) {
-            if (locationX == toX ^ locationY == toY) {
-                return CheckDirection(locationX, locationY, toX, toY);
+            int curX = locationY;
+            int curY = locationX;
+            int nX = toY;
+            int nY = toX;
+            if (curX == nX ^ curY == nY) {
+                return CheckDirection(curX, curY, nX, nY);
             } else {
                 return false;
             }
@@ -263,9 +272,13 @@ namespace File_IO.Models {
         }
 
         private bool IsValidMoveKnight(int locationX, int locationY, int toX, int toY) {
+            int curX = locationY;
+            int curY = locationX;
+            int nX = toY;
+            int nY = toX;
             bool isValid;
-            int absoluteValueX = Math.Abs(locationX - toX);
-            int absoluteValueY = Math.Abs(locationY - toY);
+            int absoluteValueX = Math.Abs(curY - nY);
+            int absoluteValueY = Math.Abs(curX - nX);
             switch (absoluteValueX) {
                 case 1:
                     isValid = absoluteValueY == 2;
@@ -297,9 +310,13 @@ namespace File_IO.Models {
         }
 
         private bool MoveKing(int locationX, int locationY, int toX, int toY) {
-            if (Math.Abs(locationX - toX) < 2 && Math.Abs(locationY - toY) < 2 &&
-                !(locationX == toX && locationY == toY)) {
-                return this[toX, toY] == null || this[toX, toY].Color != this[locationX, locationY].Color;
+            int curX = locationY;
+            int curY = locationX;
+            int nX = toY;
+            int nY = toX;
+            if (Math.Abs(curX - nX) < 2 && Math.Abs(curY - nY) < 2 &&
+                !(curX == nX && curY == nY)) {
+                return this[nY, nX] == null || this[nY, nX].Color != this[curY, curX].Color;
             } else {
                 return false;
             }
@@ -309,22 +326,22 @@ namespace File_IO.Models {
             return CheckDirection(locationX, locationY, toX, toY, this[locationX, locationY]);
         }
         private bool CheckDirection(int locationX, int locationY, int toX, int toY, ChessPiece startPiece) {
-            if (locationX == toX && locationY == toY) {
+            if (locationX == toX && locationY == toY) { //main check method, basically if the piece is where it needs to be
                 if (this[locationX, locationY] == null ||
                     this[locationX, locationY].Color != startPiece.Color) {
                     return true;
                 } else {
                     return false;
                 }
-            } else if ((locationX != toX && locationY != toY) ||
+            } else if ((locationX != toX && locationY != toY) && //logic check moving in one direction only
                 Math.Abs(locationX - toX) != Math.Abs(locationY - toY)) {
                 return false;
-            } else if (this[locationX, locationY] == null || this[locationX, locationY] == startPiece) {
+            } else if (this[locationX, locationY] == null || this[locationX, locationY] == startPiece) { //Rook and Bishop Logic if makes it
                 if (locationX == toX) {
                     return CheckDirection(locationX, locationY + (Math.Abs(toY - locationY) / (toY - locationY)),
                         toX, toY, startPiece);
                 } else if (locationY == toY) {
-                    return CheckDirection(locationX + (Math.Abs(toX - locationX) / (toX - locationX)), locationY,
+                    return CheckDirection(locationX + (Math.Abs(toX - locationX) / (toX - locationX)), locationY,//Calls in a loop where is true?
                         toX, toY, startPiece);
                 } else {
                     return CheckDirection(locationX + (Math.Abs(toX - locationX) / (toX - locationX)),
