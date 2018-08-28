@@ -25,6 +25,7 @@ namespace ChessDisplay
 
         private void SetUpBoard()
         {
+            ChessBoard.Children.Clear();
             ChessSquare chessSquare;
             bool grey = false;
             for (int column = 0; column < 8; column++)
@@ -72,7 +73,6 @@ namespace ChessDisplay
             Int32.TryParse(NewyPos.Text, out Newy);
             if (board.GetPiece(x, y) != null)
             {
-                MessageBox.Show(board.GetPiece(x, y).ToString() + board.GetPiece(x, y).Color);
                 board.Move(x, y, Newx, Newy);
                 SetUpBoard();
             }

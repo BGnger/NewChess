@@ -293,17 +293,16 @@ namespace File_IO.Models
                     }
                 }
                 else if (nY - curY == colorCoefficient)
-                {           //One-space movement check
-                    //MessageBox.Show(this[curX, (curY + colorCoefficient)].ToString());
+                {   //One-space movement check
                     if (this[(curY + colorCoefficient), curX] == null)
                     {
                         return true;
                     }
                 }
             }
-            else if (Math.Abs(toX - locationX) == 1 && toY - locationY == colorCoefficient)
+            else if (Math.Abs(nX - curX) == 1 && nY - curY == colorCoefficient)
             {     //Capture check
-                if (this[locationX, locationY + colorCoefficient] != null)
+                if (this[nX, curY + colorCoefficient] != null && this[curY + colorCoefficient, nX].Color != this[curY, curX].Color)
                 {
                     return true;
                 }
@@ -415,7 +414,7 @@ namespace File_IO.Models
             if (locationX == toX && locationY == toY)
             { //main check method, basically if the piece is where it needs to be
                 if (this[locationY, locationX] == null ||
-                    this[locationY, locationX].Color != startPiece.Color)
+                    this[locationX, locationY].Color != startPiece.Color)
                 {
                     return true;
                 }
