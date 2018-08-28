@@ -5,14 +5,18 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace File_IO.Models {
-    public class Board {
+namespace File_IO.Models
+{
+    public class Board
+    {
         private ChessPiece[][] board;
         private PieceColor lastColor = PieceColor.D;
 
-        public Board() {
+        public Board()
+        {
             board = new ChessPiece[8][];
-            for (int y = 0; y < board.Length; y++) {
+            for (int y = 0; y < board.Length; y++)
+            {
                 board[y] = new ChessPiece[8];
             }
             SetUpBoard();
@@ -51,38 +55,51 @@ namespace File_IO.Models {
             }
         }
 
-        public void SetPiece(int x, int y, ChessPiece piece) {
+        public void SetPiece(int x, int y, ChessPiece piece)
+        {
             board[y][x] = piece;
         }
 
-        public ChessPiece GetPiece(int x, int y) {
+        public ChessPiece GetPiece(int x, int y)
+        {
             return board[y][x];
         }
 
-        public ChessPiece this[int x, int y] {
-            get {
+        public ChessPiece this[int x, int y]
+        {
+            get
+            {
                 return board[y][x];
             }
-            set {
+            set
+            {
                 board[y][x] = value;
             }
         }
 
-        public bool Check(PieceColor kingColor) {
+        public bool Check(PieceColor kingColor)
+        {
             int kingX = 0;
             int kingY = 0;
-            for (int y = 0; y < board.Length; y++) {
-                for (int x = 0; x < board[y].Length; x++) {
-                    if (board[y][x] != null && board[y][x].Piece == Pieces.K && board[y][x].Color == kingColor) {
+            for (int y = 0; y < board.Length; y++)
+            {
+                for (int x = 0; x < board[y].Length; x++)
+                {
+                    if (board[y][x] != null && board[y][x].Piece == Pieces.K && board[y][x].Color == kingColor)
+                    {
                         kingX = x;
                         kingY = y;
                     }
                 }
             }
-            for (int y = 0; y < board.Length; y++) {
-                for (int x = 0; x < board[y].Length; x++) {
-                    if (board[y][x] != null && board[y][x].Color != kingColor) {
-                        if (CheckMove(x, y, kingX, kingY)) {
+            for (int y = 0; y < board.Length; y++)
+            {
+                for (int x = 0; x < board[y].Length; x++)
+                {
+                    if (board[y][x] != null && board[y][x].Color != kingColor)
+                    {
+                        if (CheckMove(x, y, kingX, kingY))
+                        {
                             return true;
                         }
                     }
@@ -91,15 +108,20 @@ namespace File_IO.Models {
             return false;
         }
 
-        public bool CheckMate(PieceColor kingColor) {
-            if (Check(kingColor)) {
+        public bool CheckMate(PieceColor kingColor)
+        {
+            if (Check(kingColor))
+            {
                 //Find King
                 int kingX = 0;
                 int kingY = 0;
                 ChessPiece king = new ChessPiece(Pieces.K, kingColor);
-                for (int y = 0; y < board.Length; y++) {
-                    for (int x = 0; x < board[y].Length; x++) {
-                        if (board[y][x] != null && board[y][x].Piece == Pieces.K && board[y][x].Color == kingColor) {
+                for (int y = 0; y < board.Length; y++)
+                {
+                    for (int x = 0; x < board[y].Length; x++)
+                    {
+                        if (board[y][x] != null && board[y][x].Piece == Pieces.K && board[y][x].Color == kingColor)
+                        {
                             kingX = x;
                             kingY = y;
                             king = board[y][x];
@@ -108,14 +130,20 @@ namespace File_IO.Models {
                 }
 
                 //Try moves to get out of check
-                for (int startY = 0; startY < board.Length; startY++) {
-                    for (int startX = 0; startX < board[startY].Length; startX++) {
-                        if (board[startY][startX] != null && board[startY][startX].Color == kingColor) {
-                            for (int toY = 0; toY < board.Length; toY++) {
-                                for (int toX = 0; toX < board[toY].Length; toX++) {
+                for (int startY = 0; startY < board.Length; startY++)
+                {
+                    for (int startX = 0; startX < board[startY].Length; startX++)
+                    {
+                        if (board[startY][startX] != null && board[startY][startX].Color == kingColor)
+                        {
+                            for (int toY = 0; toY < board.Length; toY++)
+                            {
+                                for (int toX = 0; toX < board[toY].Length; toX++)
+                                {
                                     Board boardClone = this.Clone();
                                     if (boardClone.Move(startX, startY, toX, toY) &&
-                                        !boardClone.Check(kingColor)) {
+                                        !boardClone.Check(kingColor))
+                                    {
                                         return false;
                                     }
                                 }
@@ -124,32 +152,42 @@ namespace File_IO.Models {
                     }
                 }
                 return true;
-            } else {
+            }
+            else
+            {
                 return false;
             }
         }
 
-        public Board Clone() {
-            Board newBoard = new Board() {
+        public Board Clone()
+        {
+            Board newBoard = new Board()
+            {
                 lastColor = this.lastColor
             };
-            for (int y = 0; y < board.Length; y++) {
-                for (int x = 0; x < board[y].Length; x++) {
+            for (int y = 0; y < board.Length; y++)
+            {
+                for (int x = 0; x < board[y].Length; x++)
+                {
                     newBoard[x, y] = board[y][x];
                 }
             }
             return newBoard;
         }
-        public void Copy(Board otherBoard) {
-            for (int y = 0; y < board.Length; y++) {
-                for (int x = 0; x < board[y].Length; x++) {
+        public void Copy(Board otherBoard)
+        {
+            for (int y = 0; y < board.Length; y++)
+            {
+                for (int x = 0; x < board[y].Length; x++)
+                {
                     board[y][x] = otherBoard[x, y];
                 }
             }
             lastColor = otherBoard.lastColor;
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             StringBuilder output = new StringBuilder();
             //for (int y = 0; y < board[0].Length; y++) {
             //    for (int x = 0; x < board.Length; x++) {
@@ -163,29 +201,39 @@ namespace File_IO.Models {
             //        output.Append("\n");
             //    }
             //}
-            foreach (ChessPiece[] row in board) {
-                foreach (ChessPiece piece in row) {
-                    if (piece == null) {
+            foreach (ChessPiece[] row in board)
+            {
+                foreach (ChessPiece piece in row)
+                {
+                    if (piece == null)
+                    {
                         output.Append("-");
-                    } else {
+                    }
+                    else
+                    {
                         output.Append(piece.ToString());
                     }
                 }
-                if (row != board.Last()) {
+                if (row != board.Last())
+                {
                     output.Append("\n");
                 }
             }
             return output.ToString();
         }
 
-        public bool Move(int locationX, int locationY, int toX, int toY) {
+        public bool Move(int locationX, int locationY, int toX, int toY)
+        {
             ChessPiece movingPiece = this[locationX, locationY];
-            if (movingPiece != null) {
-                if (this.CheckMove(locationX, locationY, toX, toY) && movingPiece.Color != lastColor) {
+            if (movingPiece != null)
+            {
+                if (this.CheckMove(locationX, locationY, toX, toY) && movingPiece.Color != lastColor)
+                {
                     Board boardClone = this.Clone();
                     boardClone[locationX, locationY] = null;
                     boardClone[toX, toY] = movingPiece;
-                    if (!boardClone.Check(movingPiece.Color)) {
+                    if (!boardClone.Check(movingPiece.Color))
+                    {
                         this.Copy(boardClone);
                         lastColor = movingPiece.Color;
                         return true;
@@ -194,9 +242,11 @@ namespace File_IO.Models {
             }
             return false;
         }
-        private bool CheckMove(int locationX, int locationY, int toX, int toY) {
+        private bool CheckMove(int locationX, int locationY, int toX, int toY)
+        {
             bool result = false;
-            switch (this[locationX, locationY].Piece) {
+            switch (this[locationX, locationY].Piece)
+            {
                 case Pieces.K:
                     result = MoveKing(locationX, locationY, toX, toY);
                     break;
@@ -219,50 +269,66 @@ namespace File_IO.Models {
             return result;
         }
 
-        private bool MovePawn(int locationX, int locationY, int toX, int toY) {
+        private bool MovePawn(int locationX, int locationY, int toX, int toY)
+        {
             int curX = locationY;
             int curY = locationX;
             int nX = toY;
             int nY = toX;
             ChessPiece movingPiece = this[locationX, locationY];
             int colorCoefficient = 1;
-            if (movingPiece.Color == PieceColor.D) {
+            if (movingPiece.Color == PieceColor.D)
+            {
                 colorCoefficient = -1;
             }
-            if (curX == nX) {
+            if (curX == nX)
+            {
                 //Two-space movement check
-                if ((curY == 1 || curY == 6) && nY - curY == 2 * colorCoefficient) {
+                if ((curY == 1 || curY == 6) && nY - curY == 2 * colorCoefficient)
+                {
                     if (this[curY + colorCoefficient, curX] == null &&
-                        this[curY + colorCoefficient * 2, curX] == null) {
-                        return true;
-                    }
-                } else if (nY - curY == colorCoefficient) {           //One-space movement check
-                    //MessageBox.Show(this[curX, (curY + colorCoefficient)].ToString());
-                    if (this[(curY + colorCoefficient), curX] == null) {
+                        this[curY + colorCoefficient * 2, curX] == null)
+                    {
                         return true;
                     }
                 }
-            } else if (Math.Abs(toX - locationX) == 1 && toY - locationY == colorCoefficient) {     //Capture check
-                if (this[locationX, locationY + colorCoefficient] != null) {
+                else if (nY - curY == colorCoefficient)
+                {           //One-space movement check
+                    //MessageBox.Show(this[curX, (curY + colorCoefficient)].ToString());
+                    if (this[(curY + colorCoefficient), curX] == null)
+                    {
+                        return true;
+                    }
+                }
+            }
+            else if (Math.Abs(toX - locationX) == 1 && toY - locationY == colorCoefficient)
+            {     //Capture check
+                if (this[locationX, locationY + colorCoefficient] != null)
+                {
                     return true;
                 }
             }
             return false;
         }
 
-        private bool MoveRook(int locationX, int locationY, int toX, int toY) {
+        private bool MoveRook(int locationX, int locationY, int toX, int toY)
+        {
             int curX = locationY;
             int curY = locationX;
             int nX = toY;
             int nY = toX;
-            if (curX == nX ^ curY == nY) {
+            if (curX == nX ^ curY == nY)
+            {
                 return CheckDirection(curX, curY, nX, nY);
-            } else {
+            }
+            else
+            {
                 return false;
             }
         }
 
-        private bool MoveKnight(int locationX, int locationY, int toX, int toY) {
+        private bool MoveKnight(int locationX, int locationY, int toX, int toY)
+        {
             bool isValidLocation = IsValidMoveKnight(locationX, locationY, toX, toY);
             ChessPiece placeMovedTo = this.GetPiece(toX, toY);
             bool isNotOccupiedByFriendlyPiece = placeMovedTo == null ||
@@ -271,7 +337,8 @@ namespace File_IO.Models {
             return isValidMove;
         }
 
-        private bool IsValidMoveKnight(int locationX, int locationY, int toX, int toY) {
+        private bool IsValidMoveKnight(int locationX, int locationY, int toX, int toY)
+        {
             int curX = locationY;
             int curY = locationX;
             int nX = toY;
@@ -279,7 +346,8 @@ namespace File_IO.Models {
             bool isValid;
             int absoluteValueX = Math.Abs(curY - nY);
             int absoluteValueY = Math.Abs(curX - nX);
-            switch (absoluteValueX) {
+            switch (absoluteValueX)
+            {
                 case 1:
                     isValid = absoluteValueY == 2;
                     break;
@@ -293,61 +361,94 @@ namespace File_IO.Models {
             return isValid;
         }
 
-        private bool MoveBishop(int locationX, int locationY, int toX, int toY) {
-            if (Math.Abs(locationX - toX) == Math.Abs(locationY - toY) && Math.Abs(locationX - toX) != 0) {
-                return CheckDirection(locationX, locationY, toX, toY);
-            } else {
+        private bool MoveBishop(int locationX, int locationY, int toX, int toY)
+        {
+            int curX = locationY;
+            int curY = locationX;
+            int nX = toY;
+            int nY = toX;
+            if (Math.Abs(curX - nX) == Math.Abs(curY - nY) && Math.Abs(curX - nX) != 0)
+            {
+                return CheckDirection(curX, curY, nX, nY);
+            }
+            else
+            {
                 return false;
             }
         }
 
-        private bool MoveQueen(int locationX, int locationY, int toX, int toY) {
-            if (locationX == toX && locationY == toY) {
+        private bool MoveQueen(int locationX, int locationY, int toX, int toY)
+        {
+            if (locationX == toX && locationY == toY)
+            {
                 return false;
-            } else {
+            }
+            else
+            {
                 return CheckDirection(locationX, locationY, toX, toY);
             }
         }
 
-        private bool MoveKing(int locationX, int locationY, int toX, int toY) {
+        private bool MoveKing(int locationX, int locationY, int toX, int toY)
+        {
             int curX = locationY;
             int curY = locationX;
             int nX = toY;
             int nY = toX;
             if (Math.Abs(curX - nX) < 2 && Math.Abs(curY - nY) < 2 &&
-                !(curX == nX && curY == nY)) {
+                !(curX == nX && curY == nY))
+            {
                 return this[nY, nX] == null || this[nY, nX].Color != this[curY, curX].Color;
-            } else {
+            }
+            else
+            {
                 return false;
             }
         }
 
-        private bool CheckDirection(int locationX, int locationY, int toX, int toY) {
+        private bool CheckDirection(int locationX, int locationY, int toX, int toY)
+        {
             return CheckDirection(locationX, locationY, toX, toY, this[locationX, locationY]);
         }
-        private bool CheckDirection(int locationX, int locationY, int toX, int toY, ChessPiece startPiece) {
-            if (locationX == toX && locationY == toY) { //main check method, basically if the piece is where it needs to be
-                if (this[locationX, locationY] == null ||
-                    this[locationX, locationY].Color != startPiece.Color) {
+        private bool CheckDirection(int locationX, int locationY, int toX, int toY, ChessPiece startPiece)
+        {
+            if (locationX == toX && locationY == toY)
+            { //main check method, basically if the piece is where it needs to be
+                if (this[locationY, locationX] == null ||
+                    this[locationY, locationX].Color != startPiece.Color)
+                {
                     return true;
-                } else {
+                }
+                else
+                {
                     return false;
                 }
-            } else if ((locationX != toX && locationY != toY) && //logic check moving in one direction only
-                Math.Abs(locationX - toX) != Math.Abs(locationY - toY)) {
+            }
+            else if ((locationX != toX && locationY != toY) && //logic check moving in one direction only
+              Math.Abs(locationX - toX) != Math.Abs(locationY - toY))
+            {
                 return false;
-            } else if (this[locationX, locationY] == null || this[locationX, locationY] == startPiece) { //Rook and Bishop Logic if makes it
-                if (locationX == toX) {
+            }
+            else if (this[locationY, locationX] == null || this[locationX, locationY] == startPiece)
+            { //Rook and Bishop Logic if makes it
+                if (locationX == toX)
+                {
                     return CheckDirection(locationX, locationY + (Math.Abs(toY - locationY) / (toY - locationY)),
                         toX, toY, startPiece);
-                } else if (locationY == toY) {
+                }
+                else if (locationY == toY)
+                {
                     return CheckDirection(locationX + (Math.Abs(toX - locationX) / (toX - locationX)), locationY,//Calls in a loop where is true?
                         toX, toY, startPiece);
-                } else {
+                }
+                else
+                {
                     return CheckDirection(locationX + (Math.Abs(toX - locationX) / (toX - locationX)),
                         locationY + (Math.Abs(toY - locationY) / (toY - locationY)), toX, toY, startPiece);
                 }
-            } else {
+            }
+            else
+            {
                 return false;
             }
         }
